@@ -9,6 +9,7 @@ node_modules
 packages/node-dev
 packages/**/node_modules
 packages/**/dist
+!packages/frontend/editor-ui/dist
 packages/**/.turbo
 packages/**/*.test.*
 .git
