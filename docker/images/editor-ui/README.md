@@ -14,7 +14,7 @@ From the repository root (so pnpm workspace files are available in build context
 ```bash
 # Build the production image (set backend API URL at build time if needed)
 DOCKER_BUILDKIT=1 docker build \
-  --build-arg NODE_VERSION=22.21.0 \
+  --build-arg NODE_VERSION=22.21 \
   --build-arg VUE_APP_URL_BASE_API="http://localhost:5678/" \
   -f docker/images/editor-ui/Dockerfile \
   -t local-n8n-editor-ui:prod \

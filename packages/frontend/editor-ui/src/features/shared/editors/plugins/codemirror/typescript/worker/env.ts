@@ -16,6 +16,7 @@ type EnvOptions = {
 	};
 	mode: CodeExecutionMode;
 	cache: IndexedDbCache;
+	cdnUrl: string;
 };
 
 export function removeUnusedLibs(fsMap: Map<string, string>) {
@@ -32,15 +33,17 @@ export function removeUnusedLibs(fsMap: Map<string, string>) {
 	}
 }
 
-export async function setupTypescriptEnv({ cache, code, mode }: EnvOptions) {
+export async function setupTypescriptEnv({ cache, code, mode, cdnUrl }: EnvOptions) {
+	// 使用自定义的 fetch 函数来避免实际的网络请求
 	const fsMap = await tsvfs.createDefaultMapFromCDN(
 		COMPILER_OPTIONS,
 		ts.version,
-		true,
+		true, // 启用缓存
 		ts,
 		undefined,
 		undefined,
 		cache,
+		cdnUrl,
 	);
 
 	removeUnusedLibs(fsMap);
