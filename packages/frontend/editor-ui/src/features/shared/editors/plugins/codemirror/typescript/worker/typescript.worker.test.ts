@@ -38,6 +38,7 @@ return $input.all();`;
 			inputNodeNames: [],
 			mode: 'runOnceForAllItems',
 			variables: [],
+			BASE_PATH: window.BASE_PATH || '',
 			...options,
 		},
 		async () => ({
